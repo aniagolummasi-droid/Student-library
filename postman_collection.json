@@ -1,0 +1,365 @@
+{
+  "info": {
+    "name": "School Library Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authors",
+      "item": [
+        {
+          "name": "Create Author",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"J.K. Rowling\", \"bio\": \"British author\"}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/authors",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["authors"]
+            }
+          }
+        },
+        {
+          "name": "Get All Authors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/authors",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["authors"]
+            }
+          }
+        },
+        {
+          "name": "Get Author by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/authors/{{authorId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["authors", "{{authorId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Author",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Updated Author\", \"bio\": \"Updated bio\"}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/authors/{{authorId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["authors", "{{authorId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Author",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/authors/{{authorId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["authors", "{{authorId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "item": [
+        {
+          "name": "Create Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\": \"Harry Potter\", \"isbn\": \"1234567890\", \"authors\": [\"{{authorId}}\"]}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/books",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["books"]
+            }
+          }
+        },
+        {
+          "name": "Get All Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/books?page=1&limit=10&search=Harry",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["books"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "search",
+                  "value": "Harry"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Book by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/books/{{bookId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["books", "{{bookId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Book",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\": \"Updated Book\", \"isbn\": \"1234567890\", \"authors\": [\"{{authorId}}\"]}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/books/{{bookId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["books", "{{bookId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Book",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/books/{{bookId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["books", "{{bookId}}"]
+            }
+          }
+        },
+        {
+          "name": "Borrow Book",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"studentId\": \"{{studentId}}\", \"attendantId\": \"{{attendantId}}\", \"returnDate\": \"2026-04-01\"}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/books/{{bookId}}/borrow",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["books", "{{bookId}}", "borrow"]
+            }
+          }
+        },
+        {
+          "name": "Return Book",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/books/{{bookId}}/return",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["books", "{{bookId}}", "return"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Students",
+      "item": [
+        {
+          "name": "Create Student",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"John Doe\", \"email\": \"john@example.com\", \"studentId\": \"S001\"}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/students",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["students"]
+            }
+          }
+        },
+        {
+          "name": "Get All Students",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/students",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["students"]
+            }
+          }
+        },
+        {
+          "name": "Get Student by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/students/{{studentId}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["students", "{{studentId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Library Attendants",
+      "item": [
+        {
+          "name": "Create Attendant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Jane Smith\", \"staffId\": \"A001\"}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/attendants",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["attendants"]
+            }
+          }
+        },
+        {
+          "name": "Get All Attendants",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/attendants",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["attendants"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "authorId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "bookId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "studentId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "attendantId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
