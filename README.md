@@ -45,10 +45,14 @@ npm run dev
 - POST `/students`
 - GET `/students`
 - GET `/students/:id`
+- PUT `/students/:id`
+- DELETE `/students/:id`
 
 ### Library Attendants
 - POST `/attendants`
 - GET `/attendants`
+- PUT `/attendants/:id`
+- DELETE `/attendants/:id`
 
 ## Notes
 - Borrowing sets book `status` to `OUT` with `borrowedBy`, `issuedBy`, `returnDate`.
