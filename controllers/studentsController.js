@@ -27,3 +27,26 @@ exports.getStudent = async (req, res) => {
     return res.status(400).json({ error: err.message });
   }
 };
+
+exports.updateStudent = async (req, res) => {
+  try {
+    const student = await Student.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!student) return res.status(404).json({ error: 'Student not found' });
+    return res.json(student);
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+};
+
+exports.deleteStudent = async (req, res) => {
+  try {
+    const student = await Student.findByIdAndDelete(req.params.id);
+    if (!student) return res.status(404).json({ error: 'Student not found' });
+    return res.json({ message: 'Student deleted successfully' });
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+};
